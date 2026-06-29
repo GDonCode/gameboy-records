@@ -86,7 +86,7 @@ export default function Home() {
           inset: 0;
           background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.09) 3px, rgba(0,0,0,0.09) 4px);
           pointer-events: none;
-          z-index: 20;
+          z-index: 2;
         }
 
         /* ── PARTNER CTA HOVER (box-shadow glow) ── */
@@ -307,7 +307,7 @@ export default function Home() {
                     <span
                       style={{
                         fontFamily: "'VT323', monospace",
-                        fontSize: '0.72em',
+                        fontSize: '0.95em',
                         letterSpacing: '0.35em',
                         color: '#4dff91',
                         border: '1px solid rgba(77,255,145,0.4)',
@@ -324,11 +324,11 @@ export default function Home() {
                       <h1
                         style={{
                           fontFamily: "'VT323', monospace",
-                          fontSize: '4.6em',
+                          fontSize: '5em',
                           color: '#fff',
                           letterSpacing: '0.12em',
                           textShadow: '0 2px 28px rgba(0,0,0,0.9), 0 0 50px rgba(77,255,145,0.10)',
-                          lineHeight: 1.1,
+                          lineHeight: 1.0,
                         }}
                       >
                         GAMEBOY RECORDS
@@ -336,12 +336,12 @@ export default function Home() {
                       <p
                         style={{
                           fontFamily: "'VT323', monospace",
-                          fontSize: '2.2em',
+                          fontSize: '2em',
                           color: '#4dff91',
                           letterSpacing: '0.28em',
                           textShadow: '0 0 30px rgba(77,255,145,0.40)',
                           lineHeight: 1.2,
-                          marginTop: '2px',
+                          marginTop: '4px',
                         }}
                       >
                         REALEST SOUND. TRUEST VISION.
@@ -349,92 +349,102 @@ export default function Home() {
                     </div>
 
                     {/* Artist portraits strip */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 mt-2 max-w-3xl">
-                      <a href="/artists" className="flex flex-col items-center gap-1 transition-all duration-200 hover:scale-105 opacity-75 hover:opacity-100">
-                        <div
-                          className="w-[70px] h-[70px] rounded-full flex items-center justify-center border-2 border-[rgba(77,255,145,0.3)] shadow-lg hover:border-[#4dff91] transition-all"
-                          style={{
-                            background: 'linear-gradient(135deg, #1a9e4a, #0d5c29)',
-                            fontFamily: "'VT323', monospace",
-                            fontSize: '1.6em',
-                            color: '#fff',
-                            textShadow: '0 1px 6px rgba(0,0,0,0.6)',
-                          }}
-                        >
-                          AA
-                        </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.65em', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.7)' }}>
+                    <div className="flex flex-wrap items-center justify-center gap-8 mt-2 max-w-4xl">
+
+                      {/* Alexx A-Game — portrait photo */}
+                      <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="/alexx-portrait.jpg"
+                          alt="Alexx A-Game"
+                          className="w-[80px] h-[80px] rounded-full border-[3px] border-[#4dff91] object-cover object-top"
+                          style={{ boxShadow: '0 0 0 2px rgba(77,255,145,0.5), 0 0 22px rgba(77,255,145,0.95), 0 0 8px rgba(77,255,145,0.6)' }}
+                        />
+                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Alexx A-Game
                         </span>
                       </a>
-                      <a href="/artists" className="flex flex-col items-center gap-1 transition-all duration-200 hover:scale-105 opacity-75 hover:opacity-100">
+
+                      {/* DJ Karma */}
+                      <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
-                          className="w-[70px] h-[70px] rounded-full flex items-center justify-center border-2 border-[rgba(77,255,145,0.3)] shadow-lg hover:border-[#4dff91] transition-all"
+                          className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #c0392b, #78281f)',
                             fontFamily: "'VT323', monospace",
-                            fontSize: '1.6em',
+                            fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
+                            boxShadow: '0 0 0 2px rgba(77,255,145,0.5), 0 0 22px rgba(77,255,145,0.95), 0 0 8px rgba(77,255,145,0.6)',
                           }}
                         >
                           DK
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.65em', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.7)' }}>
+                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           DJ Karma
                         </span>
                       </a>
-                      <a href="/artists" className="flex flex-col items-center gap-1 transition-all duration-200 hover:scale-105 opacity-75 hover:opacity-100">
+
+                      {/* Bassline */}
+                      <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
-                          className="w-[70px] h-[70px] rounded-full flex items-center justify-center border-2 border-[rgba(77,255,145,0.3)] shadow-lg hover:border-[#4dff91] transition-all"
+                          className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #2980b9, #1a5276)',
                             fontFamily: "'VT323', monospace",
-                            fontSize: '1.6em',
+                            fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
+                            boxShadow: '0 0 0 2px rgba(77,255,145,0.5), 0 0 22px rgba(77,255,145,0.95), 0 0 8px rgba(77,255,145,0.6)',
                           }}
                         >
                           BL
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.65em', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.7)' }}>
+                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Bassline
                         </span>
                       </a>
-                      <a href="/artists" className="flex flex-col items-center gap-1 transition-all duration-200 hover:scale-105 opacity-75 hover:opacity-100">
+
+                      {/* Neon Noir */}
+                      <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
-                          className="w-[70px] h-[70px] rounded-full flex items-center justify-center border-2 border-[rgba(77,255,145,0.3)] shadow-lg hover:border-[#4dff91] transition-all"
+                          className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #8e44ad, #5b2d6e)',
                             fontFamily: "'VT323', monospace",
-                            fontSize: '1.6em',
+                            fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
+                            boxShadow: '0 0 0 2px rgba(77,255,145,0.5), 0 0 22px rgba(77,255,145,0.95), 0 0 8px rgba(77,255,145,0.6)',
                           }}
                         >
                           NN
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.65em', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.7)' }}>
+                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Neon Noir
                         </span>
                       </a>
-                      <a href="/artists" className="flex flex-col items-center gap-1 transition-all duration-200 hover:scale-105 opacity-75 hover:opacity-100">
+
+                      {/* Vibe X */}
+                      <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
-                          className="w-[70px] h-[70px] rounded-full flex items-center justify-center border-2 border-[rgba(77,255,145,0.3)] shadow-lg hover:border-[#4dff91] transition-all"
+                          className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #d35400, #6e2c00)',
                             fontFamily: "'VT323', monospace",
-                            fontSize: '1.6em',
+                            fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
+                            boxShadow: '0 0 0 2px rgba(77,255,145,0.5), 0 0 22px rgba(77,255,145,0.95), 0 0 8px rgba(77,255,145,0.6)',
                           }}
                         >
                           VX
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.65em', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.7)' }}>
+                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Vibe X
                         </span>
                       </a>
+
                     </div>
 
                     {/* TUNE IN CTA */}
