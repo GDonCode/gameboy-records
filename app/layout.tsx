@@ -25,9 +25,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full overflow-hidden antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="preload"
+          href="/fonts/Hemisphers_Bold_Sans.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="min-h-full overflow-hidden flex flex-col">{children}</body>
     </html>
   );
 }
