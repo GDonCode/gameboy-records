@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Header from '@/components/Header';
+import GameIconsBackground from '@/components/GameIconsBackground';
 
 const newsItems = [
   { date: '28 MAY 2025', title: 'Behind the Boards: Studio Diary Vol. 3',       teaser: 'An inside look at the making of our latest EP, from first session to final mix.',          tag: 'STUDIO' },
@@ -176,17 +177,21 @@ export default function Home() {
           color: rgba(255,255,255,0.3);
         }
         .contact-submit {
+          font-family: 'Hemisphers Bold Sans', monospace;
+          font-size: 1em;
+          letter-spacing: 0.18em;
+          color: #fff;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0 32px;
+          height: 52px;
           background: linear-gradient(175deg, #22b85a 0%, #178f42 100%);
           border: 1px solid #1a9e4a;
           border-bottom-color: #0d5c29;
           border-right-color: #126e32;
-          box-shadow: 0 4px 0 #0d5c29, 0 6px 10px rgba(13,92,41,0.3);
-          color: #fff;
-          font-family: 'VT323', monospace;
-          font-size: 1em;
-          letter-spacing: 0.18em;
-          padding: 10px 28px;
-          border-radius: 2px;
+          box-shadow: 0 4px 0 #0d5c29, 0 6px 16px rgba(13,92,41,0.5), inset 0 1px 0 rgba(255,255,255,0.35);
           cursor: pointer;
           transition: transform 0.07s ease, box-shadow 0.07s ease, background 0.08s ease;
           user-select: none;
@@ -323,8 +328,8 @@ export default function Home() {
                     <div className="flex flex-col items-center gap-1">
                       <h1
                         style={{
-                          fontFamily: "'VT323', monospace",
-                          fontSize: '5em',
+                          fontFamily: "'Hemisphers Bold Sans', monospace",
+                          fontSize: '3em',
                           color: '#fff',
                           letterSpacing: '0.12em',
                           textShadow: '0 2px 28px rgba(0,0,0,0.9), 0 0 50px rgba(77,255,145,0.10)',
@@ -336,7 +341,7 @@ export default function Home() {
                       <p
                         style={{
                           fontFamily: "'VT323', monospace",
-                          fontSize: '2em',
+                          fontSize: '1.75em',
                           color: '#4dff91',
                           letterSpacing: '0.28em',
                           textShadow: '0 0 30px rgba(77,255,145,0.40)',
@@ -348,12 +353,11 @@ export default function Home() {
                       </p>
                     </div>
 
-                    {/* Artist portraits strip */}
+                    {/* Artist portraits strip 
                     <div className="flex flex-wrap items-center justify-center gap-8 mt-2 max-w-4xl">
-
-                      {/* Alexx A-Game — portrait photo */}
+                      // Alexx A-Game — portrait photo 
                       <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        // eslint-disable-next-line @next/next/no-img-element 
                         <img
                           src="/alexx-portrait.jpg"
                           alt="Alexx A-Game"
@@ -365,7 +369,7 @@ export default function Home() {
                         </span>
                       </a>
 
-                      {/* DJ Karma */}
+                      // DJ Karma 
                       <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
@@ -385,7 +389,7 @@ export default function Home() {
                         </span>
                       </a>
 
-                      {/* Bassline */}
+                      // Bassline 
                       <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
@@ -405,7 +409,7 @@ export default function Home() {
                         </span>
                       </a>
 
-                      {/* Neon Noir */}
+                      // Neon Noir 
                       <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
@@ -425,7 +429,7 @@ export default function Home() {
                         </span>
                       </a>
 
-                      {/* Vibe X */}
+                      // Vibe X 
                       <a href="/artists" className="flex flex-col items-center gap-2 transition-all duration-200 hover:scale-110">
                         <div
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
@@ -446,6 +450,7 @@ export default function Home() {
                       </a>
 
                     </div>
+                    */}
 
                     {/* TUNE IN CTA */}
                     <button className="listen-btn" onClick={openPlayer} style={{ marginTop: '6px' }}>
@@ -483,16 +488,13 @@ export default function Home() {
                       FEATURED RELEASE
                     </span>
                     <div className="flex flex-col items-center gap-1">
-                      <h1 style={{ fontFamily: "'VT323', monospace", fontSize: '5em', color: '#fff', letterSpacing: '0.15em', textShadow: '0 2px 28px rgba(0,0,0,0.9), 0 0 40px rgba(77,255,145,0.12)', lineHeight: 1 }}>
+                      <h1 style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '3em', color: '#fff', letterSpacing: '0.15em', textShadow: '0 2px 28px rgba(0,0,0,0.9), 0 0 40px rgba(77,255,145,0.12)', lineHeight: 1 }}>
                         ALEXX A-GAME
                       </h1>
-                      <h2 style={{ fontFamily: "'VT323', monospace", fontSize: '2.4em', color: '#4dff91', letterSpacing: '0.28em', textShadow: '0 0 24px rgba(77,255,145,0.55)', lineHeight: 1 }}>
+                      <h2 style={{ fontFamily: "'VT323', monospace", fontSize: '1.75em', color: '#4dff91', letterSpacing: '0.28em', textShadow: '0 0 24px rgba(77,255,145,0.55)', lineHeight: 1 }}>
                         HURT INSIDE
                       </h2>
                     </div>
-                    <p style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.8em', color: '#fff', opacity: 0.55, maxWidth: '380px', lineHeight: 1.65, textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>
-                      New single out now on Gameboy Records. Stream and support below.
-                    </p>
                     <button className="listen-btn" onClick={openPlayer}>
                       <svg viewBox="0 0 24 24" className="w-4 h-4 flex-shrink-0 block" fill="currentColor">
                         <path d="M8 5v14l11-7z" />
@@ -504,33 +506,25 @@ export default function Home() {
 
                 {/* Partners section */}
                 <div
-                  className="flex-shrink-0 relative z-[2] px-12 py-20 border-t border-[rgba(26,158,74,0.2)]"
+                  className="flex-shrink-0 relative z-[2] px-12 py-10 border-t border-[rgba(26,158,74,0.2)]"
                   style={{ background: 'linear-gradient(180deg, #0f1a12 0%, #0c1510 100%)' }}
                 >
+                  <GameIconsBackground />
                   {/* Section header */}
-                  <div className="flex flex-col items-center gap-2.5 mb-12 text-center">
-                    <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.72em', letterSpacing: '0.35em', color: '#1a9e4a', border: '1px solid rgba(26,158,74,0.35)', padding: '3px 10px', borderRadius: '2px', textShadow: '0 0 6px rgba(26,158,74,0.4)' }}>
-                      LABEL NETWORK
-                    </span>
-                    <h2 style={{ fontFamily: "'VT323', monospace", fontSize: '3.5em', color: '#4dff91', letterSpacing: '0.2em', textShadow: '0 0 20px rgba(77,255,145,0.25)' }}>
+                  <div className="flex flex-col items-center mb-12 text-center">
+                    <h2 style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '3em', color: '#4dff91', letterSpacing: '0.2em', textShadow: '0 0 20px rgba(77,255,145,0.25)' }}>
                       PARTNERS
                     </h2>
-                    <p style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.8em', color: '#4dff91', opacity: 0.4 }}>
+                    <p style={{ fontFamily: "'VT323', monospace", fontSize: '1.75em', color: '#4dff91', opacity: 0.4 }}>
                       Brands and organisations we work alongside.
                     </p>
                   </div>
 
                   {/* Vault showcase card */}
                   <div
-                    className="relative grid grid-cols-2 max-w-[1080px] mx-auto border border-[rgba(26,158,74,0.16)] bg-[rgba(26,158,74,0.03)]"
+                    className="relative grid grid-cols-2 max-w-[1080px] mx-auto bg-[#fef8f3] border-[4px] border-[#3dc97e] rounded"
                     style={{ minHeight: '420px', alignItems: 'stretch' }}
                   >
-                    <span
-                      className="absolute top-4 left-4 z-[2]"
-                      style={{ fontFamily: "'VT323', monospace", fontSize: '0.68em', letterSpacing: '0.3em', color: '#4dff91', background: 'rgba(8,16,11,0.7)', border: '1px solid rgba(26,158,74,0.35)', padding: '2px 8px', borderRadius: '2px', textShadow: '0 0 6px rgba(26,158,74,0.4)' }}
-                    >
-                      PARTNER
-                    </span>
 
                     {/* Left — video */}
                     <div className="w-full h-[440px] overflow-hidden">
@@ -543,16 +537,16 @@ export default function Home() {
                     </div>
 
                     {/* Right — content */}
-                    <div className="flex flex-col items-start justify-center gap-4 p-8">
+                    <div className="flex flex-col items-start justify-center gap-8 px-8">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src="/the-vault-logo.jpg" alt="The Vault" className="max-w-[260px] h-auto block" />
-                      <p style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.85em', color: '#4dff91', opacity: 0.6, lineHeight: 1.6 }}>
+                      <p  className="font-bold" style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '1em', color: '#16432a', lineHeight: 1.6 }}>
                         A partnering recording studio built for late-night sessions and serious sound. The Vault is where Gameboy Records artists track, mix, and bring records to life.
                       </p>
                       <a
                         href="#"
-                        className="partner-cta inline-flex items-center gap-2 no-underline transition-all duration-150"
-                        style={{ fontFamily: "'VT323', monospace", fontSize: '1em', letterSpacing: '0.2em', color: '#4dff91', border: '1px solid rgba(26,158,74,0.5)', padding: '8px 20px' }}
+                        className="listen-btn inline-flex items-center gap-2 no-underline transition-all duration-150"
+                        style={{ letterSpacing: '0.2em', padding: '8px 20px' }}
                       >
                         BOOK A SESSION →
                       </a>
@@ -565,39 +559,14 @@ export default function Home() {
                   className="flex-shrink-0 relative z-[2] px-12 py-20 border-t border-[rgba(26,158,74,0.2)]"
                   style={{ background: 'linear-gradient(180deg, #0f1a12 0%, #0c1510 100%)' }}
                 >
-                  <div className="flex flex-col items-center gap-2.5 mb-12 text-center">
-                    <span
-                      style={{
-                        fontFamily: "'VT323', monospace",
-                        fontSize: '0.72em',
-                        letterSpacing: '0.35em',
-                        color: '#1a9e4a',
-                        border: '1px solid rgba(26,158,74,0.35)',
-                        padding: '3px 10px',
-                        borderRadius: '2px',
-                        textShadow: '0 0 6px rgba(26,158,74,0.4)',
-                      }}
-                    >
-                      CONTACT
-                    </span>
+                  <div className="flex flex-col items-center mb-12 text-center">
                     <h2
-                      style={{
-                        fontFamily: "'VT323', monospace",
-                        fontSize: '3.5em',
-                        color: '#4dff91',
-                        letterSpacing: '0.2em',
-                        textShadow: '0 0 20px rgba(77,255,145,0.25)',
-                      }}
+                      style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '3em', color: '#4dff91', letterSpacing: '0.2em', textShadow: '0 0 20px rgba(77,255,145,0.25)' }}
                     >
                       SEND A MESSAGE
                     </h2>
                     <p
-                      style={{
-                        fontFamily: "'Share Tech Mono', monospace",
-                        fontSize: '0.8em',
-                        color: '#4dff91',
-                        opacity: 0.4,
-                      }}
+                      style={{ fontFamily: "'VT323', monospace", fontSize: '1.75em', color: '#4dff91', opacity: 0.4 }}
                     >
                       We’ll get back to you within 24 hours.
                     </p>
