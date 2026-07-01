@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SessionProviderWrapper from "@/components/SessionProviderWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap"
           rel="stylesheet"
         />
-        <link
+         <link
           rel="preload"
           href="/fonts/Hemisphers_Bold_Sans.otf"
           as="font"
@@ -42,7 +43,9 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="min-h-full overflow-hidden flex flex-col">{children}</body>
+      <body className="min-h-full overflow-hidden flex flex-col">
+        <SessionProviderWrapper>{children}</SessionProviderWrapper>
+      </body>
     </html>
   );
 }

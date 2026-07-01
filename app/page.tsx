@@ -1,17 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import GameIconsBackground from '@/components/GameIconsBackground';
+import { supabasePublic } from '@/lib/supabase-public';
 
-const newsItems = [
-  { date: '28 MAY 2025', title: 'Behind the Boards: Studio Diary Vol. 3',       teaser: 'An inside look at the making of our latest EP, from first session to final mix.',          tag: 'STUDIO' },
-  { date: '19 MAY 2025', title: 'We Signed Three New Artists This Spring',        teaser: 'The roster is growing. Meet the newest members of the Gameboy Records family.',           tag: 'ROSTER' },
-  { date: '08 MAY 2025', title: 'Fabric Set Recap — What a Night',                teaser: 'Sold-out room, incredible energy. Photos and full setlist inside.',                        tag: 'LIVE'   },
-  { date: '22 APR 2025', title: 'New Mix Series: Frequencies',                    teaser: 'A monthly mix dropping every last Friday. First edition from our own DJ roster.',          tag: 'MIXES'  },
-  { date: '10 APR 2025', title: 'How We Record: The Signal Chain',                teaser: 'A deep dive into our studio setup — from outboard gear to software routing.',             tag: 'STUDIO' },
-  { date: '01 APR 2025', title: 'Gameboy Records Turns Two',                      teaser: "Two years in. What we learned, and what's next.",                                         tag: 'LABEL'  },
-];
+interface NewsItem {
+  id: string;
+  date: string;
+  title: string;
+  teaser: string;
+  tag: string;
+  slug: string;
+  coverImageUrl: string | null;
+}
 
 // ── CORNER BRACKETS ──────────────────────────────────────────────────────────
 function Corners() {
@@ -25,9 +27,44 @@ function Corners() {
   );
 }
 
+// ... existing code above ...
 export default function Home() {
   const [playerMounted,  setPlayerMounted]  = useState(false);
   const [playerVisible,  setPlayerVisible]  = useState(false);
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadNews() {
+      const { data, error } = await supabasePublic
+        .from('posts')
+        .select('id, title, teaser, tag, slug, published_at, cover_image_url')
+        .eq('status', 'published')
+        .order('published_at', { ascending: false })
+        .limit(6);
+
+      if (error || cancelled) return;
+
+      const mapped = (data || []).map((p) => ({
+        id: p.id,
+        date: new Date(p.published_at)
+          .toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
+          .toUpperCase(),
+        title: p.title,
+        teaser: p.teaser,
+        tag: p.tag,
+        slug: p.slug,
+        coverImageUrl: p.cover_image_url,
+      }));
+
+      if (!cancelled) setNewsItems(mapped);
+    }
+
+    loadNews();
+    return () => { cancelled = true; };
+  }, []);
+// ... existing code below ...
 
   // Contact form state
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -249,25 +286,40 @@ export default function Home() {
                 <Corners />
 
                 <div className="no-scrollbar flex-1 overflow-y-auto">
-                  {newsItems.map((item, i) => (
-                    <div
-                      key={i}
-                      className="p-5 border-b border-[rgba(26,158,74,0.12)] transition-colors duration-150 hover:bg-[rgba(26,158,74,0.05)]"
+                  {newsItems.length === 0 && (
+                    <div className="p-5" style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.85em', color: '#3c5e4c', opacity: 0.7 }}>
+                      No news yet.
+                    </div>
+                  )}
+                  {newsItems.map((item) => (
+                    <a
+                      key={item.id}
+                      href={`/news/${item.slug}`}
+                      className="block p-5 border-b border-[rgba(26,158,74,0.12)] transition-colors duration-150 hover:bg-[rgba(26,158,74,0.05)] no-underline"
                     >
-                      {/* Image placeholder */}
-                      <div
-                        className="w-full h-[180px] mb-3 rounded-[3px] flex items-center justify-center opacity-55"
-                        style={{
-                          background: 'linear-gradient(135deg, #e3f6e9, #cfeede)',
-                          border: '1px solid rgba(26,158,74,0.15)',
-                          fontFamily: "'VT323', monospace",
-                          fontSize: '0.85em',
-                          letterSpacing: '0.3em',
-                          color: '#1a9e4a',
-                        }}
-                      >
-                        IMAGE
-                      </div>
+                      {item.coverImageUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={item.coverImageUrl}
+                          alt={item.title}
+                          className="w-full h-[180px] mb-3 rounded-[3px] object-cover"
+                          style={{ border: '1px solid rgba(26,158,74,0.15)' }}
+                        />
+                      ) : (
+                        <div
+                          className="w-full h-[180px] mb-3 rounded-[3px] flex items-center justify-center opacity-55"
+                          style={{
+                            background: 'linear-gradient(135deg, #e3f6e9, #cfeede)',
+                            border: '1px solid rgba(26,158,74,0.15)',
+                            fontFamily: "'VT323', monospace",
+                            fontSize: '0.85em',
+                            letterSpacing: '0.3em',
+                            color: '#1a9e4a',
+                          }}
+                        >
+                          IMAGE
+                        </div>
+                      )}
                       <div style={{ fontFamily: "'VT323', monospace", fontSize: '0.78em', letterSpacing: '0.22em', color: '#1a9e4a', opacity: 0.8, marginBottom: '6px' }}>
                         {item.date}
                       </div>
@@ -280,7 +332,7 @@ export default function Home() {
                       <span style={{ display: 'inline-block', marginTop: '10px', fontFamily: "'VT323', monospace", fontSize: '0.74em', letterSpacing: '0.2em', color: '#1a9e4a', opacity: 0.75, border: '1px solid rgba(26,158,74,0.25)', padding: '2px 8px', borderRadius: '1px' }}>
                         {item.tag}
                       </span>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </aside>

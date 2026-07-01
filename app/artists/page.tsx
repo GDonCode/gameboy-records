@@ -1,9 +1,12 @@
 'use client';
 
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import styles from './artists.module.css';
 import GameIconsBackground from '@/components/GameIconsBackground';
+import { supabasePublic } from '@/lib/supabase-public';
+
 
 const YT_KEY = 'AIzaSyDR2m0XOZEhBIYmPb_38BP-rcnSf9mIuFQ';
 
@@ -161,6 +164,7 @@ function PortraitCardContent({ artist }: { artist: ArtistRecord }) {
 
 interface OutgoingContentSnapshot {
   artist: ArtistRecord;
+  news: NewsItem[];
   videos: Video[];
   activeVideoId: string | null;
   videoError: string | null;
@@ -168,19 +172,20 @@ interface OutgoingContentSnapshot {
 
 interface ContentPanelsProps {
   artist: ArtistRecord;
+  news: NewsItem[];
   videos: Video[];
   activeVideoId: string | null;
   videoError: string | null;
   onSelectVideo: (id: string) => void;
 }
 
-function ContentPanels({ artist, videos, activeVideoId, videoError, onSelectVideo }: ContentPanelsProps) {
+function ContentPanels({ artist, news, videos, activeVideoId, videoError, onSelectVideo }: ContentPanelsProps) {
   return (
     <>
       <section className={`${styles.panel} ${styles['panel-news']}`}>
         <div className={styles['sec-lbl']}>NEWS</div>
         <div className={styles['news-feed']}>
-          {artist.news.map((item) => (
+          {news.map((item) => (
             <div className={styles['news-item']} key={item.title}>
               <span className={styles['news-date']}>{item.date}</span>
               <div>
@@ -237,6 +242,7 @@ export default function ArtistsPage() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
   const [videoError, setVideoError] = useState<string | null>(null);
+  const [news, setNews] = useState<NewsItem[]>([]);
 
   const isAnimatingRef = useRef(false);
   const wheelCooldownRef = useRef(false);
@@ -244,6 +250,7 @@ export default function ArtistsPage() {
   const videosRef = useRef<Video[]>([]);
   const activeVideoIdRef = useRef<string | null>(null);
   const videoErrorRef = useRef<string | null>(null);
+  const newsRef = useRef<NewsItem[]>([]);
 
   const activeArtist = ARTISTS[activeIndex];
 
@@ -254,6 +261,10 @@ export default function ArtistsPage() {
   useEffect(() => {
     videosRef.current = videos;
   }, [videos]);
+
+  useEffect(() => {
+    newsRef.current = news;
+  }, [news]);
 
   useEffect(() => {
     activeVideoIdRef.current = activeVideoId;
@@ -270,6 +281,7 @@ export default function ArtistsPage() {
     setOutgoingArtist(prevArtist);
     setOutgoingContent({
       artist: prevArtist,
+      news: newsRef.current,
       videos: videosRef.current,
       activeVideoId: activeVideoIdRef.current,
       videoError: videoErrorRef.current,
@@ -363,6 +375,39 @@ export default function ArtistsPage() {
     return () => { cancelled = true; };
   }, [activeArtist.channelId]);
 
+  useEffect(() => {
+    let cancelled = false;
+    setNews(activeArtist.news); // fallback for placeholder artists with no published posts
+
+    async function loadNews() {
+      const { data, error } = await supabasePublic
+        .from('posts')
+        .select('title, teaser, tag, published_at, artists ( name )')
+        .eq('status', 'published')
+        .order('published_at', { ascending: false });
+
+      if (error || cancelled) return;
+
+      const matched = (data || [])
+        .filter((p: any) => p.artists?.name === activeArtist.name)
+        .map((p: any) => ({
+          date: new Date(p.published_at)
+            .toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
+            .toUpperCase(),
+          title: p.title,
+          teaser: p.teaser,
+          tag: p.tag,
+        }));
+
+      if (!cancelled && matched.length > 0) {
+        setNews(matched);
+      }
+    }
+
+    loadNews();
+    return () => { cancelled = true; };
+  }, [activeArtist.name]);
+
   return (
     <div className={styles.page}>
       <Header />
@@ -420,6 +465,7 @@ export default function ArtistsPage() {
                 >
                   <ContentPanels
                     artist={outgoingContent.artist}
+                    news={outgoingContent.news}
                     videos={outgoingContent.videos}
                     activeVideoId={outgoingContent.activeVideoId}
                     videoError={outgoingContent.videoError}
@@ -433,6 +479,7 @@ export default function ArtistsPage() {
               >
                 <ContentPanels
                   artist={activeArtist}
+                  news={news}
                   videos={videos}
                   activeVideoId={activeVideoId}
                   videoError={videoError}
