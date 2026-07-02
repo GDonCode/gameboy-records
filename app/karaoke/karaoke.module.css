@@ -96,7 +96,7 @@
   line-height: 1.15;
 }
 .pickerArtist {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Arvo', monospace;
   font-size: 0.8rem;
   color: #3d5c4a;
   letter-spacing: 0.06em;
@@ -127,7 +127,7 @@
 }
 
 .time {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Arvo', monospace;
   font-size: 0.78rem;
   color: #3d5c4a;
   min-width: 36px;

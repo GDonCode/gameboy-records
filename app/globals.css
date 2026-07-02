@@ -30,11 +30,22 @@ body {
 }
 
 
-/* ── HEMISPHERS BOLD SANS ─────────────────────────────────────────────────── */
+/* ── FONTS ─────────────────────────────────────────────────── */
 @font-face {
   font-family: 'Hemisphers Bold Sans';
   src: url('/fonts/Hemisphers_Bold_Sans.otf') format('opentype');
   font-weight: bold;
+  font-style: normal;
+  ascent-override: 80%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Arvo';
+  src: url('/fonts/Arvo-Regular.ttf') format('truetype-variations');
+  font-weight: normal;
   font-style: normal;
   ascent-override: 80%;
   descent-override: 20%;

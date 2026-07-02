@@ -64,7 +64,7 @@ export default function LoginPage() {
           background: rgba(255,255,255,0.05);
           border: 1px solid rgba(26,158,74,0.25);
           color: #fff;
-          font-family: 'Share Tech Mono', monospace;
+          font-family: 'Arvo', monospace;
           font-size: 0.9em;
           padding: 10px 14px;
           border-radius: 2px;
@@ -97,7 +97,7 @@ export default function LoginPage() {
         .login-submit:disabled { opacity: 0.5; cursor: not-allowed; }
         .login-error {
           color: #ff6b6b;
-          font-family: 'Share Tech Mono', monospace;
+          font-family: 'Arvo', monospace;
           font-size: 0.82em;
           margin-bottom: 14px;
           text-align: center;

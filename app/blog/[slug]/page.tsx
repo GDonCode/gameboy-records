@@ -1,4 +1,4 @@
-// app/news/[slug]/page.tsx
+// app/blog/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
@@ -54,14 +54,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       >
         <div className="max-w-[760px] mx-auto">
           <Link
-            href="/news"
+            href="/blog"
             className="inline-block no-underline mb-8"
-            style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.16em', color: '#4dff91', opacity: 0.75 }}
+            style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.16em', color: '#4dff91', opacity: 0.75 }}
           >
-            ← BACK TO NEWS
+            ← BACK TO BLOG
           </Link>
 
-          <div style={{ fontFamily: "'VT323', monospace", fontSize: '0.85em', letterSpacing: '0.2em', color: '#4dff91', opacity: 0.8, marginBottom: '10px' }}>
+          <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.85em', letterSpacing: '0.2em', color: '#4dff91', opacity: 0.8, marginBottom: '10px' }}>
             {formatDate(post.published_at)} · {post.artists?.name?.toUpperCase() || 'GAMEBOY RECORDS'}
           </div>
 
@@ -82,7 +82,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             style={{
               display: 'inline-block',
               marginBottom: '28px',
-              fontFamily: "'VT323', monospace",
+              fontFamily: "'Arvo', monospace",
               fontSize: '0.78em',
               letterSpacing: '0.2em',
               color: '#4dff91',
@@ -106,7 +106,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           <div
             style={{
-              fontFamily: "'Share Tech Mono', monospace",
+              fontFamily: "'Arvo', monospace",
               fontSize: '1em',
               color: 'rgba(255,255,255,0.85)',
               lineHeight: 1.8,

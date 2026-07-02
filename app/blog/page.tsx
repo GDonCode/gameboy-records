@@ -1,9 +1,10 @@
-// app/news/page.tsx
+// app/blog/page.tsx
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { supabasePublic } from '@/lib/supabase-public';
+import GameIconsBackground from '@/components/GameIconsBackground';
 
-export const revalidate = 0; // always fetch fresh; switch to a number of seconds later if you want ISR caching
+export const revalidate = 0;
 
 interface PostListItem {
   id: string;
@@ -39,7 +40,7 @@ function formatDate(iso: string) {
   }).toUpperCase();
 }
 
-export default async function NewsPage() {
+export default async function BlogPage() {
   const posts = await getPublishedPosts();
 
   return (
@@ -50,7 +51,8 @@ export default async function NewsPage() {
         className="flex-1 overflow-y-auto px-12 py-16"
         style={{ background: 'linear-gradient(160deg, #1c2e20 0%, #181f1a 60%, #10160f 100%)' }}
       >
-        <div className="max-w-[900px] mx-auto">
+        <GameIconsBackground/>
+        <div className="max-w-[900px] mx-auto z-10 relative">
           <h1
             style={{
               fontFamily: "'Hemisphers Bold Sans', monospace",
@@ -61,11 +63,11 @@ export default async function NewsPage() {
               marginBottom: '40px',
             }}
           >
-            NEWS
+            BLOG
           </h1>
 
           {posts.length === 0 ? (
-            <p style={{ fontFamily: "'Share Tech Mono', monospace", color: 'rgba(255,255,255,0.5)' }}>
+            <p style={{ fontFamily: "'Arvo', monospace", color: 'rgba(255,255,255,0.5)' }}>
               No posts yet — check back soon.
             </p>
           ) : (
@@ -73,11 +75,11 @@ export default async function NewsPage() {
               {posts.map((post) => (
                 <Link
                   key={post.id}
-                  href={`/news/${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   className="block p-6 no-underline transition-colors duration-150"
                   style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(26,158,74,0.2)',
+                    background: '#fef8f3',
+                    border: '4px solid #3dc97e;',
                     borderRadius: '4px',
                   }}
                 >
@@ -95,7 +97,7 @@ export default async function NewsPage() {
                       style={{
                         background: 'linear-gradient(135deg, rgba(26,158,74,0.15), rgba(26,158,74,0.05))',
                         border: '1px solid rgba(26,158,74,0.2)',
-                        fontFamily: "'VT323', monospace",
+                        fontFamily: "'Arvo', monospace",
                         fontSize: '0.85em',
                         letterSpacing: '0.3em',
                         color: '#4dff91',
@@ -105,24 +107,24 @@ export default async function NewsPage() {
                     </div>
                   )}
 
-                  <div style={{ fontFamily: "'VT323', monospace", fontSize: '0.85em', letterSpacing: '0.2em', color: '#4dff91', opacity: 0.8, marginBottom: '8px' }}>
+                  <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.85em', letterSpacing: '0.2em', color: '#1a1a1a', opacity: 0.8, marginBottom: '8px' }}>
                     {formatDate(post.published_at)} · {post.artists?.name?.toUpperCase() || 'GAMEBOY RECORDS'}
                   </div>
-                  <div style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '1.1em', color: '#fff', lineHeight: 1.4, marginBottom: '8px' }}>
+                  <div style={{ fontFamily: "'Arvo', monospace", fontSize: '1.1em', color: '#1a1a1a', lineHeight: 1.4, marginBottom: '8px' }}>
                     {post.title}
                   </div>
-                  <div style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.85em', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
+                  <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.85em', color: '#1a1a1a', lineHeight: 1.6 }}>
                     {post.teaser}
                   </div>
                   <span
                     style={{
                       display: 'inline-block',
                       marginTop: '12px',
-                      fontFamily: "'VT323', monospace",
+                      fontFamily: "'Arvo', monospace",
                       fontSize: '0.78em',
                       letterSpacing: '0.2em',
-                      color: '#4dff91',
-                      border: '1px solid rgba(77,255,145,0.3)',
+                      color: '#1a1a1a',
+                      border: '1px solid #1a1a1a',
                       padding: '2px 10px',
                       borderRadius: '2px',
                     }}

@@ -20,7 +20,7 @@
 .main {
   flex: 1;
   overflow: hidden;
-  padding: 56px 64px;
+  padding: 24px 64px;
   display: flex;
 }
 
@@ -222,7 +222,7 @@
 .panel + .panel { border-top: 2px solid var(--sep); }
 
 .panel-news { flex: 1; min-height: 0; gap: 0; }
-.panel-vids { flex: 0 0 320px; gap: 0; }
+.panel-vids { flex: 0 0 auto; gap: 0; }
 
 .sec-lbl {
   font-family: 'Hemisphers Bold Sans', sans-serif;
@@ -269,35 +269,24 @@
   padding: 2px 8px; border-radius: 2px;
 }
 
-.vid-player {
-  flex-shrink: 0; height: 138px;
-  background: #0d0d0d;
-  border-radius: 4px; overflow: hidden;
-  border: 1.5px solid var(--sep);
-  position: relative;
-}
-.vid-player iframe {
-  width: 100%; height: 100%;
-  border: none; display: block;
-}
 .vid-msg {
-  position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
+  height: 96px;
   font-family: 'Hemisphers Bold Sans', sans-serif;
   font-size: .9rem; letter-spacing: .26em;
   color: var(--teal); opacity: .72;
 }
 
 .vid-strip {
-  display: flex; gap: 8px;
-  overflow-x: auto; scrollbar-width: none;
-  margin-top: 10px; padding-bottom: 2px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
   flex-shrink: 0;
 }
-.vid-strip::-webkit-scrollbar { display: none; }
 
 .vid-thumb {
-  flex-shrink: 0; width: 112px;
+  position: relative;
+  width: 100%;
   border-radius: 4px; overflow: hidden;
   border: 2px solid transparent;
   cursor: pointer;
@@ -308,6 +297,11 @@
 .vid-thumb img {
   width: 100%; display: block;
   aspect-ratio: 16/9; object-fit: cover;
+}
+.vid-thumb iframe {
+  width: 100%; display: block;
+  aspect-ratio: 16/9;
+  border: none;
 }
 .vid-thumb-ttl {
   font-family: 'Hemisphers Bold Sans', sans-serif;

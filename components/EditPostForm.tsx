@@ -96,7 +96,7 @@ export default function EditPostForm({ post }: { post: PostFields }) {
           background: rgba(255,255,255,0.05);
           border: 1px solid rgba(26,158,74,0.25);
           color: #fff;
-          font-family: 'Share Tech Mono', monospace;
+          font-family: 'Arvo', monospace;
           font-size: 0.9em;
           padding: 10px 14px;
           border-radius: 2px;
@@ -111,7 +111,7 @@ export default function EditPostForm({ post }: { post: PostFields }) {
         }
         .post-label {
           display: block;
-          font-family: 'Share Tech Mono', monospace;
+          font-family: 'Arvo', monospace;
           font-size: 0.78em;
           letter-spacing: 0.12em;
           color: rgba(255,255,255,0.5);
@@ -141,7 +141,7 @@ export default function EditPostForm({ post }: { post: PostFields }) {
         }
         .post-error {
           color: #ff6b6b;
-          font-family: 'Share Tech Mono', monospace;
+          font-family: 'Arvo', monospace;
           font-size: 0.82em;
           margin-bottom: 14px;
         }
@@ -176,7 +176,7 @@ export default function EditPostForm({ post }: { post: PostFields }) {
             style={{ padding: '8px 14px' }}
           />
           {isUploading && (
-            <p style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.78em', color: '#4dff91', marginTop: '-6px', marginBottom: '14px' }}>
+            <p style={{ fontFamily: "'Arvo', monospace", fontSize: '0.78em', color: '#4dff91', marginTop: '-6px', marginBottom: '14px' }}>
               Uploading…
             </p>
           )}

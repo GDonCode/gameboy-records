@@ -198,7 +198,7 @@ export default function Home() {
           background: rgba(255,255,255,0.05);
           border: 1px solid rgba(26,158,74,0.25);
           color: #fff;
-          font-family: 'Share Tech Mono', monospace;
+          font-family: 'Arvo', monospace;
           font-size: 0.9em;
           padding: 10px 14px;
           border-radius: 2px;
@@ -249,7 +249,7 @@ export default function Home() {
           cursor: not-allowed;
         }
         .status-message {
-          font-family: 'Share Tech Mono', monospace;
+          font-family: 'Arvo', monospace;
           font-size: 0.85em;
           padding: 8px 14px;
           border-radius: 2px;
@@ -287,14 +287,14 @@ export default function Home() {
 
                 <div className="no-scrollbar flex-1 overflow-y-auto">
                   {newsItems.length === 0 && (
-                    <div className="p-5" style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.85em', color: '#3c5e4c', opacity: 0.7 }}>
+                    <div className="p-5" style={{ fontFamily: "'Arvo', monospace", fontSize: '0.85em', color: '#3c5e4c', opacity: 0.7 }}>
                       No news yet.
                     </div>
                   )}
                   {newsItems.map((item) => (
                     <a
                       key={item.id}
-                      href={`/news/${item.slug}`}
+                      href={`/blog/${item.slug}`}
                       className="block p-5 border-b border-[rgba(26,158,74,0.12)] transition-colors duration-150 hover:bg-[rgba(26,158,74,0.05)] no-underline"
                     >
                       {item.coverImageUrl ? (
@@ -311,7 +311,7 @@ export default function Home() {
                           style={{
                             background: 'linear-gradient(135deg, #e3f6e9, #cfeede)',
                             border: '1px solid rgba(26,158,74,0.15)',
-                            fontFamily: "'VT323', monospace",
+                            fontFamily: "'Hemisphers Bold Sans', monospace",
                             fontSize: '0.85em',
                             letterSpacing: '0.3em',
                             color: '#1a9e4a',
@@ -320,16 +320,16 @@ export default function Home() {
                           IMAGE
                         </div>
                       )}
-                      <div style={{ fontFamily: "'VT323', monospace", fontSize: '0.78em', letterSpacing: '0.22em', color: '#1a9e4a', opacity: 0.8, marginBottom: '6px' }}>
+                      <div style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '0.78em', letterSpacing: '0.22em', color: '#1a9e4a', opacity: 0.8, marginBottom: '6px' }}>
                         {item.date}
                       </div>
-                      <div style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.9em', color: '#16432a', lineHeight: 1.45 }}>
+                      <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', color: '#16432a', lineHeight: 1.45 }}>
                         {item.title}
                       </div>
-                      <div style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '0.78em', color: '#3c5e4c', opacity: 0.7, lineHeight: 1.6, marginTop: '8px' }}>
+                      <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.78em', color: '#3c5e4c', opacity: 0.7, lineHeight: 1.6, marginTop: '8px' }}>
                         {item.teaser}
                       </div>
-                      <span style={{ display: 'inline-block', marginTop: '10px', fontFamily: "'VT323', monospace", fontSize: '0.74em', letterSpacing: '0.2em', color: '#1a9e4a', opacity: 0.75, border: '1px solid rgba(26,158,74,0.25)', padding: '2px 8px', borderRadius: '1px' }}>
+                      <span style={{ display: 'inline-block', marginTop: '10px', fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '0.74em', letterSpacing: '0.2em', color: '#1a9e4a', opacity: 0.75, border: '1px solid rgba(26,158,74,0.25)', padding: '2px 8px', borderRadius: '1px' }}>
                         {item.tag}
                       </span>
                     </a>
@@ -361,22 +361,6 @@ export default function Home() {
                     className="relative z-[3] flex flex-col items-center justify-center gap-5 px-6 text-center"
                     style={{ minHeight: 'calc(100vh - 100px)' }}
                   >
-                    <span
-                      style={{
-                        fontFamily: "'VT323', monospace",
-                        fontSize: '0.95em',
-                        letterSpacing: '0.35em',
-                        color: '#4dff91',
-                        border: '1px solid rgba(77,255,145,0.4)',
-                        padding: '3px 14px',
-                        borderRadius: '2px',
-                        textShadow: '0 0 10px rgba(77,255,145,0.6)',
-                        background: 'rgba(0,0,0,0.45)',
-                      }}
-                    >
-                      THE LABEL
-                    </span>
-
                     <div className="flex flex-col items-center gap-1">
                       <h1
                         style={{
@@ -392,7 +376,7 @@ export default function Home() {
                       </h1>
                       <p
                         style={{
-                          fontFamily: "'VT323', monospace",
+                          fontFamily: "'Arvo', monospace",
                           fontSize: '1.75em',
                           color: '#4dff91',
                           letterSpacing: '0.28em',
@@ -416,7 +400,7 @@ export default function Home() {
                           className="w-[80px] h-[80px] rounded-full border-[3px] border-[#4dff91] object-cover object-top"
                           style={{ boxShadow: '0 0 0 2px rgba(77,255,145,0.5), 0 0 22px rgba(77,255,145,0.95), 0 0 8px rgba(77,255,145,0.6)' }}
                         />
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
+                        <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Alexx A-Game
                         </span>
                       </a>
@@ -427,7 +411,7 @@ export default function Home() {
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #c0392b, #78281f)',
-                            fontFamily: "'VT323', monospace",
+                            fontFamily: "'Arvo', monospace",
                             fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
@@ -436,7 +420,7 @@ export default function Home() {
                         >
                           DK
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
+                        <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           DJ Karma
                         </span>
                       </a>
@@ -447,7 +431,7 @@ export default function Home() {
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #2980b9, #1a5276)',
-                            fontFamily: "'VT323', monospace",
+                            fontFamily: "'Arvo', monospace",
                             fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
@@ -456,7 +440,7 @@ export default function Home() {
                         >
                           BL
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
+                        <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Bassline
                         </span>
                       </a>
@@ -467,7 +451,7 @@ export default function Home() {
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #8e44ad, #5b2d6e)',
-                            fontFamily: "'VT323', monospace",
+                            fontFamily: "'Arvo', monospace",
                             fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
@@ -476,7 +460,7 @@ export default function Home() {
                         >
                           NN
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
+                        <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Neon Noir
                         </span>
                       </a>
@@ -487,7 +471,7 @@ export default function Home() {
                           className="w-[80px] h-[80px] rounded-full flex items-center justify-center border-[3px] border-[#4dff91]"
                           style={{
                             background: 'linear-gradient(135deg, #d35400, #6e2c00)',
-                            fontFamily: "'VT323', monospace",
+                            fontFamily: "'Arvo', monospace",
                             fontSize: '2em',
                             color: '#fff',
                             textShadow: '0 1px 6px rgba(0,0,0,0.6)',
@@ -496,7 +480,7 @@ export default function Home() {
                         >
                           VX
                         </div>
-                        <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
+                        <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.12em', color: '#fff' }}>
                           Vibe X
                         </span>
                       </a>
@@ -536,14 +520,14 @@ export default function Home() {
                     className="relative z-[3] flex flex-col items-center justify-center gap-6 px-10 text-center"
                     style={{ minHeight: 'calc(100vh - 100px)' }}
                   >
-                    <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.72em', letterSpacing: '0.35em', color: '#4dff91', border: '1px solid rgba(77,255,145,0.4)', padding: '3px 12px', borderRadius: '2px', textShadow: '0 0 10px rgba(77,255,145,0.6)', background: 'rgba(0,0,0,0.45)' }}>
+                    <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.72em', letterSpacing: '0.35em', color: '#4dff91', border: '1px solid rgba(77,255,145,0.4)', padding: '3px 12px', borderRadius: '2px', textShadow: '0 0 10px rgba(77,255,145,0.6)', background: 'rgba(0,0,0,0.45)' }}>
                       FEATURED RELEASE
                     </span>
                     <div className="flex flex-col items-center gap-1">
                       <h1 style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '3em', color: '#fff', letterSpacing: '0.15em', textShadow: '0 2px 28px rgba(0,0,0,0.9), 0 0 40px rgba(77,255,145,0.12)', lineHeight: 1 }}>
                         ALEXX A-GAME
                       </h1>
-                      <h2 style={{ fontFamily: "'VT323', monospace", fontSize: '1.75em', color: '#4dff91', letterSpacing: '0.28em', textShadow: '0 0 24px rgba(77,255,145,0.55)', lineHeight: 1 }}>
+                      <h2 style={{ fontFamily: "'Arvo', monospace", fontSize: '1.75em', color: '#4dff91', letterSpacing: '0.28em', textShadow: '0 0 24px rgba(77,255,145,0.55)', lineHeight: 1 }}>
                         HURT INSIDE
                       </h2>
                     </div>
@@ -556,69 +540,68 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Partners section */}
                 <div
-                  className="flex-shrink-0 relative z-[2] px-12 py-10 border-t border-[rgba(26,158,74,0.2)]"
+                  className="flex-shrink-0 relative z-[2]"
                   style={{ background: 'linear-gradient(180deg, #0f1a12 0%, #0c1510 100%)' }}
                 >
                   <GameIconsBackground />
-                  {/* Section header */}
-                  <div className="flex flex-col items-center mb-12 text-center">
-                    <h2 style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '3em', color: '#4dff91', letterSpacing: '0.2em', textShadow: '0 0 20px rgba(77,255,145,0.25)' }}>
-                      PARTNERS
-                    </h2>
-                    <p style={{ fontFamily: "'VT323', monospace", fontSize: '1.75em', color: '#4dff91', opacity: 0.4 }}>
-                      Brands and organisations we work alongside.
-                    </p>
-                  </div>
 
-                  {/* Vault showcase card */}
-                  <div
-                    className="relative grid grid-cols-2 max-w-[1080px] mx-auto bg-[#fef8f3] border-[4px] border-[#3dc97e] rounded"
-                    style={{ minHeight: '420px', alignItems: 'stretch' }}
-                  >
-
-                    {/* Left — video */}
-                    <div className="w-full h-[440px] overflow-hidden">
-                      <video
-                        src="/vault.mp4"
-                        poster="/the-vault-1.jpg"
-                        autoPlay muted loop playsInline
-                        className="w-full h-full object-cover block"
-                      />
-                    </div>
-
-                    {/* Right — content */}
-                    <div className="flex flex-col items-start justify-center gap-8 px-8">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/the-vault-logo.jpg" alt="The Vault" className="max-w-[260px] h-auto block" />
-                      <p  className="font-bold" style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '1em', color: '#16432a', lineHeight: 1.6 }}>
-                        A partnering recording studio built for late-night sessions and serious sound. The Vault is where Gameboy Records artists track, mix, and bring records to life.
+                  {/* Partners sub-section */}
+                  <div className="px-12 py-10">
+                    {/* Section header */}
+                    <div className="flex flex-col items-center mb-12 text-center">
+                      <h2 style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '3em', color: '#4dff91', letterSpacing: '0.2em', textShadow: '0 0 20px rgba(77,255,145,0.25)' }}>
+                        PARTNERS
+                      </h2>
+                      <p style={{ fontFamily: "'Arvo', monospace", fontSize: '1.25em', color: '#4dff91', opacity: 0.4 }}>
+                        Brands and organisations we work alongside.
                       </p>
-                      <a
-                        href="#"
-                        className="listen-btn inline-flex items-center gap-2 no-underline transition-all duration-150"
-                        style={{ letterSpacing: '0.2em', padding: '8px 20px' }}
-                      >
-                        BOOK A SESSION →
-                      </a>
+                    </div>
+
+                    {/* Vault showcase card */}
+                    <div
+                      className="relative grid grid-cols-2 max-w-[1080px] mx-auto bg-[#fef8f3] border-[4px] border-[#3dc97e] rounded"
+                      style={{ minHeight: '420px', alignItems: 'stretch' }}
+                    >
+
+                      {/* Left — video */}
+                      <div className="w-full h-[440px] overflow-hidden">
+                        <video
+                          src="/vault.mp4"
+                          poster="/the-vault-1.jpg"
+                          autoPlay muted loop playsInline
+                          className="w-full h-full object-cover block"
+                        />
+                      </div>
+
+                      {/* Right — content */}
+                      <div className="flex flex-col items-start justify-center gap-8 px-8">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/the-vault-logo.jpg" alt="The Vault" className="max-w-[260px] h-auto block" />
+                        <p  className="font-bold" style={{ fontFamily: "'Arvo', monospace", fontSize: '1em', color: '#16432a', lineHeight: 1.6 }}>
+                          A partnering recording studio built for late-night sessions and serious sound. The Vault is where Gameboy Records artists track, mix, and bring records to life.
+                        </p>
+                        <a
+                          href="#"
+                          className="listen-btn inline-flex items-center gap-2 no-underline transition-all duration-150"
+                          style={{ letterSpacing: '0.2em', padding: '8px 20px' }}
+                        >
+                          BOOK A SESSION →
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* ── CONTACT US SECTION ────────────────────────────────── */}
-                <div
-                  className="flex-shrink-0 relative z-[2] px-12 py-20 border-t border-[rgba(26,158,74,0.2)]"
-                  style={{ background: 'linear-gradient(180deg, #0f1a12 0%, #0c1510 100%)' }}
-                >
-                  <div className="flex flex-col items-center mb-12 text-center">
+                  {/* Contact sub-section */}
+                  <div className="px-12 py-20">
+                    <div className="flex flex-col items-center mb-12 text-center">
                     <h2
                       style={{ fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '3em', color: '#4dff91', letterSpacing: '0.2em', textShadow: '0 0 20px rgba(77,255,145,0.25)' }}
                     >
                       SEND A MESSAGE
                     </h2>
                     <p
-                      style={{ fontFamily: "'VT323', monospace", fontSize: '1.75em', color: '#4dff91', opacity: 0.4 }}
+                      style={{ fontFamily: "'Arvo', monospace", fontSize: '1.25em', color: '#4dff91', opacity: 0.4 }}
                     >
                       We’ll get back to you within 24 hours.
                     </p>
@@ -666,7 +649,8 @@ export default function Home() {
                       </div>
                     )}
                   </form>
-                </div>
+                  </div>{/* /contact sub-section */}
+                </div>{/* /partners+contact shared wrapper */}
 
               </div>{/* /main-scroll */}
 
@@ -691,14 +675,14 @@ export default function Home() {
           >
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#4dff91] animate-pulse" />
-              <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.7em', letterSpacing: '0.28em', color: '#4dff91' }}>
+              <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.7em', letterSpacing: '0.28em', color: '#4dff91' }}>
                 NOW PLAYING
               </span>
             </div>
             <button
               onClick={() => setPlayerVisible(false)}
               className="mini-player-close transition-colors"
-              style={{ fontFamily: "'VT323', monospace", fontSize: '1em', color: '#4dff91', background: 'none', border: 'none', cursor: 'pointer', padding: '0 4px', lineHeight: 1 }}
+              style={{ fontFamily: "'Arvo', monospace", fontSize: '1em', color: '#4dff91', background: 'none', border: 'none', cursor: 'pointer', padding: '0 4px', lineHeight: 1 }}
               aria-label="Hide player"
             >
               ✕

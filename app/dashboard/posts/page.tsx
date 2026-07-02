@@ -72,7 +72,7 @@ export default async function MyPostsPage() {
         </div>
 
         {rows.length === 0 ? (
-          <p style={{ fontFamily: "'Share Tech Mono', monospace", color: 'rgba(255,255,255,0.5)' }}>
+          <p style={{ fontFamily: "'Arvo', monospace", color: 'rgba(255,255,255,0.5)' }}>
             You haven&apos;t written anything yet.
           </p>
         ) : (
@@ -91,13 +91,13 @@ export default async function MyPostsPage() {
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: "'Share Tech Mono', monospace", color: '#fff', fontSize: '0.95em', marginBottom: '4px' }}>
+                  <div style={{ fontFamily: "'Arvo', monospace", color: '#fff', fontSize: '0.95em', marginBottom: '4px' }}>
                     {post.title}
                   </div>
                   <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                     <span
                       style={{
-                        fontFamily: "'VT323', monospace",
+                        fontFamily: "'Arvo', monospace",
                         fontSize: '0.75em',
                         letterSpacing: '0.14em',
                         color: post.status === 'published' ? '#4dff91' : 'rgba(255,255,255,0.5)',
@@ -108,7 +108,7 @@ export default async function MyPostsPage() {
                     >
                       {post.status.toUpperCase()}
                     </span>
-                    <span style={{ fontFamily: "'VT323', monospace", fontSize: '0.75em', color: 'rgba(255,255,255,0.4)' }}>
+                    <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.75em', color: 'rgba(255,255,255,0.4)' }}>
                       {post.tag}
                     </span>
                   </div>
@@ -119,7 +119,7 @@ export default async function MyPostsPage() {
                     href={`/dashboard/posts/${post.id}/edit`}
                     className="no-underline"
                     style={{
-                      fontFamily: "'Share Tech Mono', monospace",
+                      fontFamily: "'Arvo', monospace",
                       fontSize: '0.78em',
                       color: '#4dff91',
                       border: '1px solid rgba(77,255,145,0.35)',
