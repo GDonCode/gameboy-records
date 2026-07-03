@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { supabasePublic } from '@/lib/supabase-public';
+import GameIconsBackground from '@/components/GameIconsBackground';
 
 export const revalidate = 0;
 
@@ -52,68 +53,75 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         className="flex-1 overflow-y-auto px-12 py-16"
         style={{ background: 'linear-gradient(160deg, #1c2e20 0%, #181f1a 60%, #10160f 100%)' }}
       >
-        <div className="max-w-[760px] mx-auto">
-          <Link
-            href="/blog"
-            className="inline-block no-underline mb-8"
-            style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.16em', color: '#4dff91', opacity: 0.75 }}
-          >
-            ← BACK TO BLOG
-          </Link>
+        <GameIconsBackground />
+        <div className="w-full flex gap-6 items-start z-10 relative">
+          <div className="w-[25%] flex-shrink-0 sticky top-0">
+            <Link
+              href="/blog"
+              className="inline-block no-underline mb-8"
+              style={{ fontFamily: "'Arvo', monospace", fontSize: '0.9em', letterSpacing: '0.16em', color: '#4dff91', opacity: 0.75 }}
+            >
+              ← BACK TO BLOG
+            </Link>
 
-          <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.85em', letterSpacing: '0.2em', color: '#4dff91', opacity: 0.8, marginBottom: '10px' }}>
-            {formatDate(post.published_at)} · {post.artists?.name?.toUpperCase() || 'GAMEBOY RECORDS'}
+            <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.85em', letterSpacing: '0.2em', color: '#4dff91', opacity: 0.8, marginBottom: '10px' }}>
+              {formatDate(post.published_at)} · {post.artists?.name?.toUpperCase() || 'GAMEBOY RECORDS'}
+            </div>
+
+            <h1
+              style={{
+                fontFamily: "'Hemisphers Bold Sans', monospace",
+                fontSize: '2.2em',
+                color: '#fff',
+                letterSpacing: '0.06em',
+                lineHeight: 1.25,
+                marginBottom: '16px',
+              }}
+            >
+              {post.title}
+            </h1>
+
+            <span
+              style={{
+                display: 'inline-block',
+                marginBottom: '28px',
+                fontFamily: "'Arvo', monospace",
+                fontSize: '0.78em',
+                letterSpacing: '0.2em',
+                color: '#4dff91',
+                border: '1px solid rgba(77,255,145,0.3)',
+                padding: '2px 10px',
+                borderRadius: '2px',
+              }}
+            >
+              {post.tag}
+            </span>
           </div>
 
-          <h1
-            style={{
-              fontFamily: "'Hemisphers Bold Sans', monospace",
-              fontSize: '2.2em',
-              color: '#fff',
-              letterSpacing: '0.06em',
-              lineHeight: 1.25,
-              marginBottom: '16px',
-            }}
-          >
-            {post.title}
-          </h1>
+          <div className="flex-1 min-w-0">
+            <div style={{ background: '#fef8f3', borderRadius: '4px', overflow: 'hidden' }}>
+              {post.cover_image_url && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={post.cover_image_url}
+                  alt={post.title}
+                  className="w-full h-auto block"
+                />
+              )}
 
-          <span
-            style={{
-              display: 'inline-block',
-              marginBottom: '28px',
-              fontFamily: "'Arvo', monospace",
-              fontSize: '0.78em',
-              letterSpacing: '0.2em',
-              color: '#4dff91',
-              border: '1px solid rgba(77,255,145,0.3)',
-              padding: '2px 10px',
-              borderRadius: '2px',
-            }}
-          >
-            {post.tag}
-          </span>
-
-          {post.cover_image_url && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={post.cover_image_url}
-              alt={post.title}
-              className="w-full h-auto rounded mb-8"
-              style={{ border: '1px solid rgba(26,158,74,0.25)' }}
-            />
-          )}
-
-          <div
-            style={{
-              fontFamily: "'Arvo', monospace",
-              fontSize: '1em',
-              color: 'rgba(255,255,255,0.85)',
-              lineHeight: 1.8,
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {post.body}
+              <div
+                style={{
+                  fontFamily: "'Arvo', monospace",
+                  fontSize: '1em',
+                  color: '#1a1a1a',
+                  lineHeight: 1.8,
+                  whiteSpace: 'pre-wrap',
+                  padding: '32px',
+                }}
+              >
+                {post.body}
+              </div>
+            </div>
           </div>
         </div>
       </div>

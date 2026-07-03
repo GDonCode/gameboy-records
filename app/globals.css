@@ -77,7 +77,8 @@ body {
   user-select: none;
 }
 .nav-btn + .nav-btn { border-left: none; }
-.nav-btn:hover {
+.nav-btn:hover,
+.nav-btn.active {
   transform: translateY(-2px);
   background: linear-gradient(175deg, #2bd06a 0%, #1aa64c 100%);
   border-color: #4dff91;

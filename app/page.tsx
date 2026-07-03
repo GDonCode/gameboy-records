@@ -329,7 +329,7 @@ export default function Home() {
                       <div style={{ fontFamily: "'Arvo', monospace", fontSize: '0.78em', color: '#3c5e4c', opacity: 0.7, lineHeight: 1.6, marginTop: '8px' }}>
                         {item.teaser}
                       </div>
-                      <span style={{ display: 'inline-block', marginTop: '10px', fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '0.74em', letterSpacing: '0.2em', color: '#1a9e4a', opacity: 0.75, border: '1px solid rgba(26,158,74,0.25)', padding: '2px 8px', borderRadius: '1px' }}>
+                      <span style={{ display: 'inline-block', marginTop: '10px', fontFamily: "'Hemisphers Bold Sans', monospace", fontSize: '0.74em', letterSpacing: '0.3em', color: '#ffffff', opacity: 0.75, border: '1px solid rgba(26,158,74,0.25)', padding: '4px 12px', background: 'rgba(26,158,74)' }}>
                         {item.tag}
                       </span>
                     </a>

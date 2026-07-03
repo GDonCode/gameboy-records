@@ -263,10 +263,10 @@
 .news-tag {
   display: inline-block; margin-top: 7px;
   font-family: 'Hemisphers Bold Sans', sans-serif;
-  font-size: .72rem; letter-spacing: .16em;
-  color: var(--teal);
-  border: 1px solid var(--teal-lt);
-  padding: 2px 8px; border-radius: 2px;
+  font-size: 0.75rem; letter-spacing: .3em;
+  color: #fff;
+  background: rgba(26,158,74);
+  padding: 4px 12px; border-radius: 2px;
 }
 
 .vid-msg {

@@ -48,22 +48,33 @@ export default async function BlogPage() {
       <Header />
 
       <div
-        className="flex-1 overflow-y-auto px-12 py-16"
+        className="flex-1 overflow-y-auto py-6"
         style={{ background: 'linear-gradient(160deg, #1c2e20 0%, #181f1a 60%, #10160f 100%)' }}
       >
         <GameIconsBackground/>
-        <div className="max-w-[900px] mx-auto z-10 relative">
+        <div className="mx-auto px-12 z-10 relative">
           <h1
             style={{
               fontFamily: "'Hemisphers Bold Sans', monospace",
-              fontSize: '2.6em',
+              fontSize: '2em',
               color: '#4dff91',
               letterSpacing: '0.14em',
               textShadow: '0 0 20px rgba(77,255,145,0.25)',
-              marginBottom: '40px',
+              marginBottom: '24px',
             }}
           >
-            BLOG
+            What's Happening @ Gameboy Records
+            <span
+              style={{
+                display: 'block',
+                width: '90px',
+                height: '5px',
+                marginTop: '10px',
+                background: '#3dc97e',
+                boxShadow: '0 0 12px rgba(61,201,126,0.6)',
+                borderRadius: '2px',
+              }}
+            />
           </h1>
 
           {posts.length === 0 ? (
@@ -71,15 +82,15 @@ export default async function BlogPage() {
               No posts yet — check back soon.
             </p>
           ) : (
-            <div className="flex flex-col gap-6">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {posts.map((post) => (
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className="block p-6 no-underline transition-colors duration-150"
+                  className="block p-6 no-underline hover:translate-y-[-6px] transition-all duration-150"
                   style={{
                     background: '#fef8f3',
-                    border: '4px solid #3dc97e;',
+                    border: '4px solid #3dc97e',
                     borderRadius: '4px',
                   }}
                 >
@@ -120,12 +131,12 @@ export default async function BlogPage() {
                     style={{
                       display: 'inline-block',
                       marginTop: '12px',
-                      fontFamily: "'Arvo', monospace",
+                      fontFamily: "'Hemisphers Bold Sans', monospace",
                       fontSize: '0.78em',
-                      letterSpacing: '0.2em',
-                      color: '#1a1a1a',
-                      border: '1px solid #1a1a1a',
-                      padding: '2px 10px',
+                      letterSpacing: '0.3em',
+                      color: '#ffffff',
+                      background: 'rgba(26,158,74)',
+                      padding: '4px 12px',
                       borderRadius: '2px',
                     }}
                   >
