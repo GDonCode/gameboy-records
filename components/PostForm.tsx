@@ -14,6 +14,7 @@ interface PostFields {
   tag: string;
   status: string;
   cover_image_url?: string | null;
+  cover_media_type?: 'image' | 'video' | null;
 }
 
 interface PostFormProps {
@@ -28,6 +29,7 @@ export default function PostForm({ post, onSaved }: PostFormProps) {
   const [body, setBody] = useState(post?.body || '');
   const [tag, setTag] = useState(post?.tag || 'NEWS');
   const [coverImageUrl, setCoverImageUrl] = useState(post?.cover_image_url || '');
+  const [coverMediaType, setCoverMediaType] = useState<'image' | 'video' | null>(post?.cover_media_type || null);
   const [isUploading, setIsUploading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -53,6 +55,7 @@ export default function PostForm({ post, onSaved }: PostFormProps) {
     }
 
     setCoverImageUrl(data.url);
+    setCoverMediaType(file.type.startsWith('video/') ? 'video' : 'image');
   }
 
   async function submitPost(status: 'draft' | 'published') {
@@ -65,7 +68,15 @@ export default function PostForm({ post, onSaved }: PostFormProps) {
     const res = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, teaser, body, tag, status, cover_image_url: coverImageUrl || null }),
+       body: JSON.stringify({
+        title,
+        teaser,
+        body,
+        tag,
+        status,
+        cover_image_url: coverImageUrl || null,
+        cover_media_type: coverMediaType,
+      }),
     });
 
     setIsSubmitting(false);
@@ -132,11 +143,11 @@ export default function PostForm({ post, onSaved }: PostFormProps) {
       </select>
 
       <label className="block text-[0.78em] tracking-[0.12em] text-white/50 mb-1.5" style={{ fontFamily: "'Arvo', monospace" }}>
-        Cover Image (optional)
+        Cover Image or Video (optional)
       </label>
       <input
         type="file"
-        accept="image/*"
+        accept="image/*,video/*"
         onChange={handleFileChange}
         disabled={isUploading}
         className="bg-white/5 border border-[rgba(26,158,74,0.25)] text-white text-[0.9em] px-3.5 py-2 rounded-[2px] w-full outline-none mb-3.5"
@@ -146,7 +157,14 @@ export default function PostForm({ post, onSaved }: PostFormProps) {
           Uploading…
         </p>
       )}
-      {coverImageUrl && !isUploading && (
+      {coverImageUrl && !isUploading && coverMediaType === 'video' && (
+        <video
+          src={coverImageUrl}
+          controls
+          className="w-full max-h-[160px] object-cover rounded-[2px] mb-3.5 border border-[rgba(26,158,74,0.25)]"
+        />
+      )}
+      {coverImageUrl && !isUploading && coverMediaType !== 'video' && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={coverImageUrl}

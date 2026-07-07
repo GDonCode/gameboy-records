@@ -16,13 +16,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'No file provided.' }, { status: 400 });
   }
 
-  if (!file.type.startsWith('image/')) {
-    return NextResponse.json({ error: 'File must be an image.' }, { status: 400 });
+   const isImage = file.type.startsWith('image/');
+  const isVideo = file.type.startsWith('video/');
+
+  if (!isImage && !isVideo) {
+    return NextResponse.json({ error: 'File must be an image or video.' }, { status: 400 });
   }
 
-  const maxBytes = 5 * 1024 * 1024; // 5MB
+  const maxBytes = isVideo ? 50 * 1024 * 1024 : 5 * 1024 * 1024; // 50MB video / 5MB image
   if (file.size > maxBytes) {
-    return NextResponse.json({ error: 'Image must be under 5MB.' }, { status: 400 });
+    return NextResponse.json(
+      { error: isVideo ? 'Video must be under 50MB.' : 'Image must be under 5MB.' },
+      { status: 400 }
+    );
   }
 
   const ext = file.name.split('.').pop() || 'jpg';

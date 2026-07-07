@@ -31,6 +31,9 @@ function Corners() {
 export default function Home() {
   const [playerMounted,  setPlayerMounted]  = useState(false);
   const [playerVisible,  setPlayerVisible]  = useState(false);
+  const [playerSrc, setPlayerSrc] = useState(
+    'https://www.youtube.com/embed/videoseries?list=PL5jjb3J99wR7DQiFdlhXnit_1bZt2a4Bo&autoplay=1&controls=1'
+  );
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
 
   useEffect(() => {
@@ -71,7 +74,8 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
-  function openPlayer() {
+  function openPlayer(embedSrc?: string) {
+    if (embedSrc) setPlayerSrc(embedSrc);
     setPlayerMounted(true);
     setPlayerVisible(true);
   }
@@ -297,7 +301,16 @@ export default function Home() {
                       href={`/blog/${item.slug}`}
                       className="block p-5 border-b border-[rgba(26,158,74,0.12)] transition-colors duration-150 hover:bg-[rgba(26,158,74,0.05)] no-underline"
                     >
-                      {item.coverImageUrl ? (
+                      {item.coverImageUrl && /\.(mp4|webm|mov|m4v)$/i.test(item.coverImageUrl) ? (
+                        <video
+                          src={item.coverImageUrl}
+                          muted
+                          playsInline
+                          preload="metadata"
+                          className="w-full h-[180px] mb-3 rounded-[3px] object-cover"
+                          style={{ border: '1px solid rgba(26,158,74,0.15)' }}
+                        />
+                      ) : item.coverImageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           src={item.coverImageUrl}
@@ -488,8 +501,12 @@ export default function Home() {
                     </div>
                     */}
 
-                    {/* TUNE IN CTA */}
-                    <button className="listen-btn" onClick={openPlayer} style={{ marginTop: '6px' }}>
+                    {/* TUNE IN CTA — always plays the playlist, never a single video */}
+                    <button
+                      className="listen-btn"
+                      onClick={() => openPlayer('https://www.youtube.com/embed/videoseries?list=PL5jjb3J99wR7DQiFdlhXnit_1bZt2a4Bo&autoplay=1&controls=1')}
+                      style={{ marginTop: '6px' }}
+                    >
                       <svg viewBox="0 0 24 24" className="w-4 h-4 flex-shrink-0 block" fill="currentColor">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -498,7 +515,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* ── HERO — full-height video background (Hurt Inside) ── */}
                 <div
                   className="relative flex-shrink-0 overflow-hidden"
                   style={{ minHeight: 'calc(100vh - 100px)' }}
@@ -531,7 +547,10 @@ export default function Home() {
                         HURT INSIDE
                       </h2>
                     </div>
-                    <button className="listen-btn" onClick={openPlayer}>
+                    <button
+                      className="listen-btn"
+                      onClick={() => openPlayer('https://www.youtube.com/embed/HgpiViCedv0?autoplay=1&controls=1')}
+                    >
                       <svg viewBox="0 0 24 24" className="w-4 h-4 flex-shrink-0 block" fill="currentColor">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -689,12 +708,11 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Embedded playlist iframe — now using your playlist ID */}
-          <iframe
-            src="https://www.youtube.com/embed/videoseries?list=PL5jjb3J99wR7DQiFdlhXnit_1bZt2a4Bo&autoplay=1&controls=1"
+           <iframe
+            src={playerSrc}
             allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
-            title="Gameboy Records Playlist"
+            title="Gameboy Records Player"
             className="w-full border-0 block"
             style={{ height: '191px' }}
           />

@@ -19,12 +19,12 @@ export default function Header() {
   return (
     <header className="relative flex-shrink-0 bg-[#fef8f3] z-10">
       <Corners />
-      <div className="flex items-end justify-between h-[100px] px-7 relative z-[1]">
+      <div className="flex items-end justify-between h-[90px] px-7 relative z-[1]">
         {/* Logo */}
         <Link href="/" className="flex items-center self-center">
           <div className="flex items-center self-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gameboy-logo-removebg-preview.png" alt="Gameboy Records" className="h-[54px] w-auto block" />
+            <img src="/gameboy-logo-removebg-preview.png" alt="Gameboy Records" className="h-[48px] w-auto block" />
           </div>
         </Link>
 

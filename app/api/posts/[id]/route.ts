@@ -13,7 +13,7 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const { title, teaser, body, tag, status, cover_image_url } = await request.json();
+  const { title, teaser, body, tag, status, cover_image_url, cover_media_type } = await request.json();
 
   if (!title || !teaser || !body) {
     return NextResponse.json({ error: 'Title, teaser, and body are required.' }, { status: 400 });
@@ -47,6 +47,7 @@ export async function PATCH(
       body,
       tag: tag || 'NEWS',
       cover_image_url: cover_image_url || null,
+      cover_media_type: cover_image_url ? (cover_media_type || 'image') : null,
       status: nextStatus,
       published_at: publishedAt,
     })

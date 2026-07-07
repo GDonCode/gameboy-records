@@ -15,6 +15,7 @@ interface PostDetail {
   body: string;
   tag: string;
   cover_image_url: string | null;
+  cover_media_type: 'image' | 'video' | null;
   published_at: string;
   artists: { name: string } | null;
 }
@@ -22,7 +23,7 @@ interface PostDetail {
 async function getPost(slug: string): Promise<PostDetail | null> {
   const { data, error } = await supabasePublic
     .from('posts')
-    .select('id, title, slug, teaser, body, tag, cover_image_url, published_at, artists ( name )')
+    .select('id, title, slug, teaser, body, tag, cover_image_url, cover_media_type, published_at, artists ( name )')
     .eq('slug', slug)
     .eq('status', 'published')
     .single();
@@ -101,12 +102,25 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <div className="flex-1 min-w-0">
             <div style={{ background: '#fef8f3', borderRadius: '4px', overflow: 'hidden' }}>
               {post.cover_image_url && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={post.cover_image_url}
-                  alt={post.title}
-                  className="w-full h-auto block"
-                />
+                <div
+                  className="relative w-full aspect-video"
+                  style={{ background: '#0c1510' }}
+                >
+                  {post.cover_media_type === 'video' ? (
+                    <video
+                      src={post.cover_image_url}
+                      className="absolute inset-0 w-full h-full object-contain"
+                      controls
+                    />
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={post.cover_image_url}
+                      alt={post.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  )}
+                </div>
               )}
 
               <div

@@ -21,7 +21,7 @@ export default async function DashboardPage() {
 
   const { data: posts, error: postsError } = await supabaseAdmin
     .from('posts')
-    .select('id, title, slug, teaser, body, tag, status, created_at, cover_image_url')
+    .select('id, title, slug, teaser, body, tag, status, created_at, cover_image_url, cover_media_type')
     .eq('author_id', session.user.id)
     .order('created_at', { ascending: false });
 

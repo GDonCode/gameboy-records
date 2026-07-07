@@ -13,6 +13,7 @@ export default function NewPostPage() {
   const [body, setBody] = useState('');
   const [tag, setTag] = useState('NEWS');
   const [coverImageUrl, setCoverImageUrl] = useState('');
+  const [coverMediaType, setCoverMediaType] = useState<'image' | 'video' | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,6 +39,7 @@ export default function NewPostPage() {
     }
 
     setCoverImageUrl(data.url);
+    setCoverMediaType(file.type.startsWith('video/') ? 'video' : 'image');
   }
 
   async function submitPost(status: 'draft' | 'published') {
@@ -47,7 +49,15 @@ export default function NewPostPage() {
     const res = await fetch('/api/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, teaser, body, tag, status, cover_image_url: coverImageUrl || null }),
+      body: JSON.stringify({
+        title,
+        teaser,
+        body,
+        tag,
+        status,
+        cover_image_url: coverImageUrl || null,
+        cover_media_type: coverMediaType,
+      }),
     });
 
     setIsSubmitting(false);
@@ -173,10 +183,10 @@ export default function NewPostPage() {
             ))}
           </select>
 
-          <label className="post-label">Cover Image (optional)</label>
+          <label className="post-label">Cover Image or Video (optional)</label>
           <input
             type="file"
-            accept="image/*"
+            accept="image/*,video/*"
             onChange={handleFileChange}
             disabled={isUploading}
             className="post-input"
@@ -187,7 +197,14 @@ export default function NewPostPage() {
               Uploading…
             </p>
           )}
-          {coverImageUrl && !isUploading && (
+          {coverImageUrl && !isUploading && coverMediaType === 'video' && (
+            <video
+              src={coverImageUrl}
+              controls
+              style={{ width: '100%', maxHeight: '160px', objectFit: 'cover', borderRadius: '2px', marginBottom: '14px', border: '1px solid rgba(26,158,74,0.25)' }}
+            />
+          )}
+          {coverImageUrl && !isUploading && coverMediaType === 'image' && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={coverImageUrl}

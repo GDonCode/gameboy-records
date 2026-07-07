@@ -13,6 +13,7 @@ export interface DashboardPost {
   status: string;
   created_at: string;
   cover_image_url: string | null;
+  cover_media_type: 'image' | 'video' | null;
 }
 
 interface MyPostsListProps {

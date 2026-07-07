@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Not authenticated.' }, { status: 401 });
   }
 
-  const { title, teaser, body, tag, status, cover_image_url } = await request.json();
+  const { title, teaser, body, tag, status, cover_image_url, cover_media_type } = await request.json();
 
   if (!title || !teaser || !body) {
     return NextResponse.json({ error: 'Title, teaser, and body are required.' }, { status: 400 });
@@ -37,6 +37,7 @@ export async function POST(request: Request) {
       body,
       tag: tag || 'NEWS',
       cover_image_url: cover_image_url || null,
+      cover_media_type: cover_image_url ? (cover_media_type || 'image') : null,
       status: status === 'published' ? 'published' : 'draft',
       published_at: status === 'published' ? new Date().toISOString() : null,
     })
