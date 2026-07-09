@@ -356,7 +356,7 @@ export default function Home() {
                 {/* ═══ NEW LABEL HERO — "REALEST. TRUEST." ═══ */}
                 <div
                   className="relative flex-shrink-0 overflow-hidden"
-                  style={{ minHeight: 'calc(100vh - 100px)' }}
+                  style={{ minHeight: 'calc(100vh - 84px)' }}
                 >
                   {/* Background video */}
                   <video
@@ -372,7 +372,7 @@ export default function Home() {
                   {/* Content */}
                   <div
                     className="relative z-[3] flex flex-col items-center justify-center gap-5 px-6 text-center"
-                    style={{ minHeight: 'calc(100vh - 100px)' }}
+                    style={{ minHeight: 'calc(100vh - 84px)' }}
                   >
                     <div className="flex flex-col items-center gap-1">
                       <h1
@@ -517,7 +517,7 @@ export default function Home() {
 
                 <div
                   className="relative flex-shrink-0 overflow-hidden"
-                  style={{ minHeight: 'calc(100vh - 100px)' }}
+                  style={{ minHeight: 'calc(100vh - 84px)' }}
                 >
                   {/* Background video */}
                   <video
@@ -534,7 +534,7 @@ export default function Home() {
                   {/* Hero content */}
                   <div
                     className="relative z-[3] flex flex-col items-center justify-center gap-6 px-10 text-center"
-                    style={{ minHeight: 'calc(100vh - 100px)' }}
+                    style={{ minHeight: 'calc(100vh - 84px)' }}
                   >
                     <span style={{ fontFamily: "'Arvo', monospace", fontSize: '0.72em', letterSpacing: '0.35em', color: '#4dff91', border: '1px solid rgba(77,255,145,0.4)', padding: '3px 12px', borderRadius: '2px', textShadow: '0 0 10px rgba(77,255,145,0.6)', background: 'rgba(0,0,0,0.45)' }}>
                       FEATURED RELEASE
