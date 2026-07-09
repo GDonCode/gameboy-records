@@ -17,7 +17,7 @@ const ARTIST = {
   password: 'password123', // ← set real temp password
   name: 'Alexx A-Game',
   role: 'GAMEBOY RECORDS · ARTIST',
-  portrait_url: '/agame-portrait.jpg',
+  portrait_url: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media/agame-portrait.jpg`,
   channel_id: 'UC2M7qSo99KTIq-WgnCNq50Q',
   is_admin: true, // only artist on the label — make admin so they can manage the roster later
 };

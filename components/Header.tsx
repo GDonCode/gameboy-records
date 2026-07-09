@@ -13,6 +13,8 @@ function Corners() {
   );
 }
 
+const MEDIA_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media`;
+
 export default function Header() {
   const pathname = usePathname();
 
@@ -24,7 +26,7 @@ export default function Header() {
         <Link href="/" className="flex items-center self-center">
           <div className="flex items-center self-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gameboy-logo-removebg-preview.png" alt="Gameboy Records" className="h-[48px] w-auto block" />
+            <img src={`${MEDIA_BASE}/gameboy-logo-removebg-preview.png`} alt="Gameboy Records" className="h-[48px] w-auto block" />
           </div>
         </Link>
 

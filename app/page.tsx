@@ -5,6 +5,8 @@ import Header from '@/components/Header';
 import GameIconsBackground from '@/components/GameIconsBackground';
 import { supabasePublic } from '@/lib/supabase-public';
 
+const MEDIA_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media`;
+
 interface NewsItem {
   id: string;
   date: string;
@@ -360,7 +362,7 @@ export default function Home() {
                 >
                   {/* Background video */}
                   <video
-                    src="/In Studio with Alexx A-Game - Life Of GameBoy.mp4"
+                    src={`${MEDIA_BASE}/hero-vid.mp4`}
                     autoPlay muted loop playsInline
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -521,7 +523,7 @@ export default function Home() {
                 >
                   {/* Background video */}
                   <video
-                    src="/Alexx%20A-Game%20-%20Hurt%20Inside%20(Official%20Music%20Video).mp4"
+                    src={`${MEDIA_BASE}/hurt-inside-preview.mp4`}
                     autoPlay muted loop playsInline
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -586,8 +588,8 @@ export default function Home() {
                       {/* Left — video */}
                       <div className="w-full h-[440px] overflow-hidden">
                         <video
-                          src="/vault.mp4"
-                          poster="/the-vault-1.jpg"
+                          src={`${MEDIA_BASE}/vault.mp4`}
+                          poster={`${MEDIA_BASE}/the-vault-1.jpg`}
                           autoPlay muted loop playsInline
                           className="w-full h-full object-cover block"
                         />
@@ -596,7 +598,8 @@ export default function Home() {
                       {/* Right — content */}
                       <div className="flex flex-col items-start justify-center gap-8 px-8">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/the-vault-logo.jpg" alt="The Vault" className="max-w-[260px] h-auto block" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={`${MEDIA_BASE}/the-vault-logo.jpg`} alt="The Vault" className="max-w-[260px] h-auto block" />
                         <p  className="font-bold" style={{ fontFamily: "'Arvo', monospace", fontSize: '1em', color: '#16432a', lineHeight: 1.6 }}>
                           A partnering recording studio built for late-night sessions and serious sound. The Vault is where Gameboy Records artists track, mix, and bring records to life.
                         </p>
