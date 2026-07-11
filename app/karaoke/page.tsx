@@ -19,14 +19,16 @@ interface Song {
   lyrics: LyricLine[];
 }
 
+const MEDIA_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media`;
+
 // ── SONGS ── artist fills in real lyrics/timestamps per track ─────
 const SONGS: Song[] = [
   {
     id: 'more-life',
     title: 'More Life',
     artist: 'Alexx A-Game',
-    audioSrc: '/Alexx-A-Game-More Life-(Instrumental).mp3',
-    photoSrc: '/agame-portrait.jpg',
+    audioSrc: `${MEDIA_BASE}/${encodeURIComponent('Alexx-A-Game-More Life-(Instrumental).mp3')}`,
+    photoSrc: `${MEDIA_BASE}/agame-portrait.jpg`,
     lyrics: [
       { time: 0, text: '♪ Instrumental intro ♪' },
       { time: 9.5, text: 'Cyah link no more' },
