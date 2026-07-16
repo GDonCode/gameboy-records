@@ -3,12 +3,14 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
+import MobileBottomNav from '@/components/MobileBottomNav';
 import styles from './artists.module.css';
 import GameIconsBackground from '@/components/GameIconsBackground';
 import { supabasePublic } from '@/lib/supabase-public';
 
 
 const YT_KEY = 'AIzaSyDR2m0XOZEhBIYmPb_38BP-rcnSf9mIuFQ';
+const MEDIA_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media`;
 
 interface NewsItem {
   date: string;
@@ -37,7 +39,7 @@ const ARTISTS: ArtistRecord[] = [
     id: 'a-game',
     name: 'Alexx A-Game',
     role: 'GAMEBOY RECORDS · ARTIST',
-    portraitSrc: '/agame-portrait.jpg',
+    portraitSrc: `${MEDIA_BASE}/agame-portrait.jpg`,
     channelId: 'UC2M7qSo99KTIq-WgnCNq50Q',
     news: [
       {
@@ -409,6 +411,7 @@ export default function ArtistsPage() {
   return (
     <div className={styles.page}>
       <Header />
+      <MobileBottomNav />
       <main className={styles.main}>
         <GameIconsBackground />
         <div className={styles.artistStage}>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import { supabasePublic } from '@/lib/supabase-public';
 import GameIconsBackground from '@/components/GameIconsBackground';
+import MobileBottomNav from '@/components/MobileBottomNav';
 
 export const revalidate = 0;
 
@@ -46,9 +47,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   if (!post) notFound();
 
-  return (
+   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Header />
+      <MobileBottomNav />
 
       <div
         className="flex-1 overflow-y-auto px-12 py-16"

@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
+import MobileBottomNav from '@/components/MobileBottomNav';
 import GameIconsBackground from '@/components/GameIconsBackground';
 import { supabasePublic } from '@/lib/supabase-public';
+
 
 const MEDIA_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media`;
 
@@ -112,6 +114,18 @@ export default function Home() {
   return (
     <>
       <style>{`
+
+        /* ── HERO TAGLINE — responsive size/spacing ── */
+        .hero-tagline {
+          font-size: 1.75em;
+          letter-spacing: 0.16em;
+        }
+        @media (min-width: 768px) {
+          .hero-tagline {
+            font-size: 1.75em;
+            letter-spacing: 0.28em;
+          }
+        }
 
         /* ── SIDEBAR GRADIENT RULE LINE (pseudo-element) ── */
         .news-sidebar::after {
@@ -276,6 +290,7 @@ export default function Home() {
       <div className="flex flex-col h-screen overflow-hidden">
 
         <Header />
+        <MobileBottomNav />
 
         {/* ── BODY ROW ───────────────────────────────────────────────── */}
         <div className="flex flex-1 overflow-hidden">
@@ -288,7 +303,7 @@ export default function Home() {
             >
 
               {/* ── NEWS SIDEBAR ──────────────────────────────────────── */}
-              <aside className="news-sidebar relative flex flex-col w-80 flex-shrink-0 bg-[#fef8f3] z-[25] overflow-hidden">
+              <aside className="hidden md:flex news-sidebar relative flex-col w-80 flex-shrink-0 bg-[#fef8f3] z-[25] overflow-hidden">
                 <Corners />
 
                 <div className="no-scrollbar flex-1 overflow-y-auto">
@@ -353,7 +368,7 @@ export default function Home() {
               </aside>
 
               {/* ── MAIN SCROLL COLUMN ────────────────────────────────── */}
-              <div className="no-scrollbar flex-1 min-h-0 overflow-y-auto flex flex-col">
+              <div className="no-scrollbar flex-1 min-h-0 overflow-y-auto flex flex-col pt-[60px] md:pt-0">
 
                 {/* ═══ NEW LABEL HERO — "REALEST. TRUEST." ═══ */}
                 <div
@@ -377,7 +392,8 @@ export default function Home() {
                     style={{ minHeight: 'calc(100vh - 84px)' }}
                   >
                     <div className="flex flex-col items-center gap-1">
-                      <h1
+                       <h1
+                        className="hidden md:block"
                         style={{
                           fontFamily: "'Hemisphers Bold Sans', monospace",
                           fontSize: '3em',
@@ -390,17 +406,18 @@ export default function Home() {
                         GAMEBOY RECORDS
                       </h1>
                       <p
+                        className="hero-tagline"
                         style={{
                           fontFamily: "'Arvo', monospace",
-                          fontSize: '1.75em',
                           color: '#4dff91',
-                          letterSpacing: '0.28em',
                           textShadow: '0 0 30px rgba(77,255,145,0.40)',
                           lineHeight: 1.2,
                           marginTop: '4px',
                         }}
                       >
-                        REALEST SOUND. TRUEST VISION.
+                        REALEST SOUND.
+                        <br className="md:hidden" />
+                        {' '}TRUEST VISION.
                       </p>
                     </div>
 

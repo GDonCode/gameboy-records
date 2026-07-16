@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import GameIconsBackground from '@/components/GameIconsBackground';
+import MobileBottomNav from '@/components/MobileBottomNav';
 import styles from './karaoke.module.css';
 
 interface LyricLine {
@@ -232,6 +233,7 @@ export default function KaraokePage() {
   return (
     <div className={styles.page}>
       <Header />
+      <MobileBottomNav />
 
       <main className={styles.main}>
         <GameIconsBackground />

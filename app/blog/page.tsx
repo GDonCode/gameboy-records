@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import { supabasePublic } from '@/lib/supabase-public';
 import GameIconsBackground from '@/components/GameIconsBackground';
+import MobileBottomNav from '@/components/MobileBottomNav';
 
 export const revalidate = 0;
 
@@ -95,8 +96,9 @@ export default async function BlogPage({
         .no-scrollbar::-webkit-scrollbar { display: none; }
       `}</style>
 
-      <div className="flex flex-col h-screen overflow-hidden">
+       <div className="flex flex-col h-screen overflow-hidden">
         <Header />
+        <MobileBottomNav />
 
         <div
           className="flex flex-1 overflow-hidden"

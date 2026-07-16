@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 function Corners() {
   return (
     <>
@@ -17,21 +18,51 @@ const MEDIA_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/pu
 
 export default function Header() {
   const pathname = usePathname();
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    lastScrollY.current = 0;
+
+    function handleScroll(e: Event) {
+      const target = e.target as HTMLElement | Document;
+      const currentY =
+        target instanceof Document
+          ? window.scrollY
+          : (target as HTMLElement).scrollTop;
+
+      const goingDown = currentY > lastScrollY.current;
+      const pastThreshold = currentY > 80;
+
+      setHidden(goingDown && pastThreshold);
+      lastScrollY.current = currentY;
+    }
+
+    // capture: true — required because scroll events on nested
+    // overflow-auto containers (the sidebar/main-scroll divs in page.tsx)
+    // do not bubble, but capturing listeners still see them.
+    window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+    return () => window.removeEventListener('scroll', handleScroll, true);
+  }, []);
 
   return (
-    <header className="relative flex-shrink-0 bg-[#fef8f3] z-10">
+    <header
+      className={`fixed top-0 left-0 right-0 md:relative md:sticky md:top-0 flex-shrink-0 bg-[#fef8f3] z-40 transition-transform duration-300 ease-in-out md:translate-y-0 ${
+        hidden ? '-translate-y-full' : 'translate-y-0'
+      }`}
+    >
       <Corners />
-      <div className="flex items-end justify-between h-[90px] px-7 relative z-[1]">
+      <div className="flex items-end justify-center md:justify-between h-[60px] md:h-[90px] px-7 relative z-[1]">
         {/* Logo */}
         <Link href="/" className="flex items-center self-center">
           <div className="flex items-center self-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${MEDIA_BASE}/gameboy-logo-removebg-preview.png`} alt="Gameboy Records" className="h-[48px] w-auto block" />
+            <img src={`${MEDIA_BASE}/gameboy-logo-removebg-preview.png`} alt="Gameboy Records" className="h-[36px] md:h-[48px] w-auto block" />
           </div>
         </Link>
 
-         {/* Nav */}
-        <nav className="flex items-center self-center">
+        {/* Nav — desktop only; mobile uses MobileBottomNav */}
+        <nav className="hidden md:flex items-center self-center">
           <a href="/blog" className={`nav-btn${pathname === '/blog' ? ' active' : ''}`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className="w-4 h-4 flex-shrink-0 block">
               <path d="M320 544C461.4 544 576 436.5 576 304C576 171.5 461.4 64 320 64C178.6 64 64 171.5 64 304C64 358.3 83.2 408.3 115.6 448.5L66.8 540.8C62 549.8 63.5 560.8 70.4 568.3C77.3 575.8 88.2 578.1 97.5 574.1L215.9 523.4C247.7 536.6 282.9 544 320 544zM192 272C209.7 272 224 286.3 224 304C224 321.7 209.7 336 192 336C174.3 336 160 321.7 160 304C160 286.3 174.3 272 192 272zM320 272C337.7 272 352 286.3 352 304C352 321.7 337.7 336 320 336C302.3 336 288 321.7 288 304C288 286.3 302.3 272 320 272zM416 304C416 286.3 430.3 272 448 272C465.7 272 480 286.3 480 304C480 321.7 465.7 336 448 336C430.3 336 416 321.7 416 304z" />
